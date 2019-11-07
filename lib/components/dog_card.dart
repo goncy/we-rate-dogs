@@ -14,7 +14,7 @@ class DogCard extends StatelessWidget {
         child: InkWell(
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailsPage(this.dog),
+              builder: (context) => DetailsPage(dog),
             ),
           ),
           child: Container(
@@ -26,7 +26,7 @@ class DogCard extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Row(children: [
                       Hero(
-                          tag: this.dog,
+                          tag: dog,
                           child: Container(
                             width: 100.0,
                             height: 100.0,
@@ -35,9 +35,9 @@ class DogCard extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: this.dog.image == null
+                                image: dog.image == null
                                     ? AssetImage('assets/placeholder.png')
-                                    : NetworkImage(this.dog.image),
+                                    : NetworkImage(dog.image),
                               ),
                             ),
                           )),
@@ -45,14 +45,14 @@ class DogCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text(this.dog.name,
+                          Text(dog.name,
                               style: Theme.of(context).textTheme.headline),
-                          Text(this.dog.location,
+                          Text(dog.location,
                               style: Theme.of(context).textTheme.subhead),
                           Row(
                             children: <Widget>[
                               Icon(Icons.star),
-                              Text(': ${this.dog.rating} / 10')
+                              Text(': ${dog.rating} / 10')
                             ],
                           )
                         ],

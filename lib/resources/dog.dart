@@ -4,10 +4,10 @@ import 'dart:io';
 import "../models/dog.dart";
 
 class DogResource {
-  final Uri uri = Uri.https('api.myjson.com', '/bins/13cx4g');
-  final HttpClient http = HttpClient();
+  final Uri _uri = Uri.https('api.myjson.com', '/bins/13cx4g');
+  final HttpClient _http = HttpClient();
 
-  List<Dog> parse(dynamic dogs) => List<Dog>.from(
+  List<Dog> _parse(dynamic dogs) => List<Dog>.from(
         dogs.map(
           (dog) => Dog(
             dog['name'],
@@ -19,10 +19,10 @@ class DogResource {
       );
 
   Future list() async {
-    var request = await http.getUrl(uri);
+    var request = await _http.getUrl(_uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
 
-    return parse(json.decode(responseBody));
+    return _parse(json.decode(responseBody));
   }
 }

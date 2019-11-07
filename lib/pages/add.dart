@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/dog.dart';
 import '../contexts/dog.dart';
+import '../models/dog.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -10,20 +10,19 @@ class AddPage extends StatefulWidget {
 }
 
 class AddPageState extends State<AddPage> {
-  final form = GlobalKey<FormState>();
+  final _form = GlobalKey<FormState>();
 
   String name;
   String location;
   String description;
 
-  void handleSubmit() {
+  void _handleSubmit() {
     var add = Provider.of<DogContext>(context, listen: false).add;
 
-    if (this.form.currentState.validate()) {
-      this.form.currentState.save();
+    if (_form.currentState.validate()) {
+      _form.currentState.save();
 
-      add(Dog(this.name, this.location, this.description,
-          'https://placehold.it/256x256'));
+      add(Dog(name, location, description, 'https://placehold.it/256x256'));
 
       Navigator.pop(context);
     }
@@ -33,7 +32,7 @@ class AddPageState extends State<AddPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(title: Text('Add a new dog')),
         body: Form(
-          key: this.form,
+          key: _form,
           child: Container(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -78,7 +77,7 @@ class AddPageState extends State<AddPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: Builder(
                       builder: (context) => RaisedButton(
-                        onPressed: () => handleSubmit(),
+                        onPressed: _handleSubmit,
                         child: Text('Submit'),
                       ),
                     ),

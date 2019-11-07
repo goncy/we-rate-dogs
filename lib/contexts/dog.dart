@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../resources/dog.dart';
 import '../models/dog.dart';
+import '../resources/dog.dart';
 
 class DogContext with ChangeNotifier {
   final DogResource resource = DogResource();
@@ -10,15 +10,15 @@ class DogContext with ChangeNotifier {
   List<Dog> dogs = [];
 
   DogContext() {
-    this.fetch();
+    _fetch();
   }
 
-  Future fetch() async {
+  Future _fetch() async {
     try {
       var dogs = await resource.list();
 
       this.dogs = dogs;
-      this.isLoading = false;
+      isLoading = false;
 
       notifyListeners();
     } catch (exception) {
