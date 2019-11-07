@@ -1,54 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:we_rate_dogs/contexts/dog.dart';
 
-import "models/dog.dart";
-import "resources/dog.dart";
 import 'pages/home.dart';
 import 'pages/add.dart';
 import 'pages/loading.dart';
 
-void main() => runApp(App());
+void main() => runApp(ChangeNotifierProvider<DogContext>(
+    builder: (context) => DogContext(), child: App()));
 
-class App extends StatefulWidget {
+class App extends StatelessWidget {
   @override
-  AppState createState() => AppState();
-}
-
-class AppState extends State<App> {
-  final DogResource resource = DogResource();
-
-  bool isLoading = true;
-  List<Dog> dogs = [];
-
-  Future initialize() async {
-    try {
-      var dogs = await resource.list();
-
-      setState(() {
-        this.dogs = dogs;
-        this.isLoading = false;
-      });
-    } catch (exception) {
-      print(exception);
-    }
-  }
-
-  void add(Dog dog) => setState(() => this.dogs.add(dog));
-
-  @override
-  void initState() {
-    super.initState();
-
-    this.initialize();
-  }
-
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-          theme: ThemeData(
-              brightness: Brightness.light, primarySwatch: Colors.deepOrange),
-          initialRoute: '/',
-          routes: {
-            '/': (context) =>
-                this.isLoading ? LoadingPage() : HomePage(this.dogs),
-            '/add': (context) => AddPage(this.add)
-          });
+  Widget build(BuildContext context) =>
+      Provider.of<DogContext>(context).isLoading
+          ? LoadingPage()
+          : MaterialApp(
+              theme: ThemeData(
+                brightness: Brightness.light,
+              ),
+              initialRoute: '/',
+              routes: {
+                  '/': (context) => HomePage(),
+                  '/add': (context) => AddPage(),
+                });
 }

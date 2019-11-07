@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/dog.dart';
+import '../contexts/dog.dart';
 
 class AddPage extends StatefulWidget {
-  final Function add;
-
-  AddPage(this.add);
-
   @override
   AddPageState createState() => AddPageState();
 }
@@ -19,9 +17,12 @@ class AddPageState extends State<AddPage> {
   String description;
 
   void handleSubmit(context) {
+    var add = Provider.of<DogContext>(context).add;
+
     if (this.form.currentState.validate()) {
       this.form.currentState.save();
-      widget.add(Dog(this.name, this.location, this.description,
+
+      add(Dog(this.name, this.location, this.description,
           'https://placehold.it/256x256'));
 
       Navigator.pop(context);
