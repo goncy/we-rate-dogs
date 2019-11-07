@@ -26,7 +26,11 @@ class DogContext with ChangeNotifier {
     }
   }
 
-  void add(Dog dog) => dogs.add(dog);
+  void add(Dog dog) {
+    dogs.add(dog);
+
+    notifyListeners();
+  }
 
   void rate(Dog dog, int rating) {
     dog.rating = rating;

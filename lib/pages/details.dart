@@ -17,7 +17,7 @@ class DetailsPage extends StatefulWidget {
 class DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
-    var rate = Provider.of<DogContext>(context).rate;
+    var rate = Provider.of<DogContext>(context, listen: false).rate;
 
     return Scaffold(
         appBar: AppBar(title: Text('Meet ${widget.dog.name}')),

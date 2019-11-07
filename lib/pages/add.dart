@@ -16,8 +16,8 @@ class AddPageState extends State<AddPage> {
   String location;
   String description;
 
-  void handleSubmit(context) {
-    var add = Provider.of<DogContext>(context).add;
+  void handleSubmit() {
+    var add = Provider.of<DogContext>(context, listen: false).add;
 
     if (this.form.currentState.validate()) {
       this.form.currentState.save();
@@ -78,7 +78,7 @@ class AddPageState extends State<AddPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: Builder(
                       builder: (context) => RaisedButton(
-                        onPressed: () => handleSubmit(context),
+                        onPressed: () => handleSubmit(),
                         child: Text('Submit'),
                       ),
                     ),

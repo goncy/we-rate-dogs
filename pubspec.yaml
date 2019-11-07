@@ -26,6 +26,7 @@ dependencies:
   provider:
 
 dev_dependencies:
+  effective_dart: ^1.1.0
   flutter_test:
     sdk: flutter
 

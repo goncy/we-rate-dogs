@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:we_rate_dogs/contexts/dog.dart';
 
-import 'pages/home.dart';
-import 'pages/add.dart';
-import 'pages/loading.dart';
+import './contexts/dog.dart';
+import './pages/add.dart';
+import './pages/home.dart';
+import './pages/loading.dart';
 
 void main() => runApp(ChangeNotifierProvider<DogContext>(
     builder: (context) => DogContext(), child: App()));

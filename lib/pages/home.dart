@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:we_rate_dogs/contexts/dog.dart';
 
 import '../components/dog_card.dart';
+import '../contexts/dog.dart';
 
 class HomePage extends StatelessWidget {
   @override

@@ -23,6 +23,6 @@ class DogResource {
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
 
-    return this.parse(json.decode(responseBody));
+    return parse(json.decode(responseBody));
   }
 }
