@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Loading page
 class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(

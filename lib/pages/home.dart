@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../components/dog_card.dart';
 import '../contexts/dog.dart';
 
+/// Home page
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

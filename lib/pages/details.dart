@@ -5,16 +5,19 @@ import 'package:provider/provider.dart';
 import '../contexts/dog.dart';
 import '../models/dog.dart';
 
+/// Dog details page
 class DetailsPage extends StatefulWidget {
+  /// Dog
   final Dog dog;
 
+  /// Dog details page constructor
   DetailsPage(this.dog);
 
   @override
-  DetailsPageState createState() => DetailsPageState();
+  _DetailsPageState createState() => _DetailsPageState();
 }
 
-class DetailsPageState extends State<DetailsPage> {
+class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     var rate = Provider.of<DogContext>(context, listen: false).rate;
