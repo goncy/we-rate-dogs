@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../models/dog.dart';
-import '../resources/dog.dart';
+import './model.dart';
+import './resources.dart';
 
 /// Dog context
 class DogContext with ChangeNotifier {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../components/dog_card.dart';
-import '../contexts/dog.dart';
+import '../components/card.dart';
+import '../context.dart';
 
 /// Home page
 class HomePage extends StatelessWidget {

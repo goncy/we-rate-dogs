@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import "../models/dog.dart";
+import "./model.dart";
 
+/// Dog resources
 class DogResource {
-  final Uri _uri = Uri.https('api.myjson.com', '/bins/13cx4g');
+  final Uri _uri = Uri.https('api.myjson.com', '/bins/dxy5o');
   final HttpClient _http = HttpClient();
 
   List<Dog> _parse(dynamic dogs) => List<Dog>.from(
@@ -18,6 +19,7 @@ class DogResource {
         ),
       );
 
+  /// Fetch all dogs
   Future<List<Dog>> list() async {
     var request = await _http.getUrl(_uri);
     var response = await request.close();

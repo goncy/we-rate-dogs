@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/dog.dart';
+import '../model.dart';
 import '../pages/details.dart';
 
 /// Dog card

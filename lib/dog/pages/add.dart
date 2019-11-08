@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../contexts/dog.dart';
-import '../models/dog.dart';
+import '../context.dart';
+import '../model.dart';
 
+/// Add page
 class AddPage extends StatefulWidget {
   @override
   _AddPageState createState() => _AddPageState();

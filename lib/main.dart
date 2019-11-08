@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './contexts/dog.dart';
-import './pages/add.dart';
-import './pages/home.dart';
-import './pages/loading.dart';
+import './app/pages/loading.dart';
+import './dog/context.dart';
+import './dog/pages/add.dart';
+import './dog/pages/list.dart';
 
 void main() => runApp(ChangeNotifierProvider<DogContext>(
     builder: (context) => DogContext(initialize: true), child: App()));
 
+/// App component
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>

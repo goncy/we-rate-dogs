@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
-import '../contexts/dog.dart';
-import '../models/dog.dart';
+import '../context.dart';
+import '../model.dart';
 
 /// Dog details page
 class DetailsPage extends StatefulWidget {
