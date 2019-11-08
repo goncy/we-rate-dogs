@@ -6,15 +6,15 @@ import '../models/dog.dart';
 
 class AddPage extends StatefulWidget {
   @override
-  AddPageState createState() => AddPageState();
+  _AddPageState createState() => _AddPageState();
 }
 
-class AddPageState extends State<AddPage> {
+class _AddPageState extends State<AddPage> {
   final _form = GlobalKey<FormState>();
 
-  String name;
-  String location;
-  String description;
+  String _name;
+  String _location;
+  String _description;
 
   void _handleSubmit() {
     var add = Provider.of<DogContext>(context, listen: false).add;
@@ -22,7 +22,12 @@ class AddPageState extends State<AddPage> {
     if (_form.currentState.validate()) {
       _form.currentState.save();
 
-      add(Dog(name, location, description, 'https://placehold.it/256x256'));
+      add(Dog(
+        name: _name,
+        location: _location,
+        description: _description,
+        image: 'https://placehold.it/256x256',
+      ));
 
       Navigator.pop(context);
     }
@@ -44,7 +49,7 @@ class AddPageState extends State<AddPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: TextFormField(
-                        onSaved: (name) => this.name = name,
+                        onSaved: (name) => _name = name,
                         validator: (name) =>
                             name.isEmpty ? 'A pup needs a name' : null,
                         decoration: InputDecoration(
@@ -54,7 +59,7 @@ class AddPageState extends State<AddPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: TextFormField(
-                        onSaved: (location) => this.location = location,
+                        onSaved: (location) => _location = location,
                         validator: (location) =>
                             location.isEmpty ? 'A pup needs a house' : null,
                         decoration: InputDecoration(
@@ -64,7 +69,7 @@ class AddPageState extends State<AddPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: TextFormField(
-                      onSaved: (description) => this.description = description,
+                      onSaved: (description) => _description = description,
                       validator: (description) => description.isEmpty
                           ? 'A pup needs a description'
                           : null,

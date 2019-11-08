@@ -7,7 +7,7 @@ import './pages/home.dart';
 import './pages/loading.dart';
 
 void main() => runApp(ChangeNotifierProvider<DogContext>(
-    builder: (context) => DogContext(), child: App()));
+    builder: (context) => DogContext(initialize: true), child: App()));
 
 class App extends StatelessWidget {
   @override

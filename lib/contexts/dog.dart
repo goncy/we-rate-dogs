@@ -3,21 +3,29 @@ import 'package:flutter/widgets.dart';
 import '../models/dog.dart';
 import '../resources/dog.dart';
 
+/// Dog context
 class DogContext with ChangeNotifier {
-  final DogResource resource = DogResource();
+  final DogResource _resource = DogResource();
 
-  bool isLoading = true;
+  /// Dog context loading status
+  bool isLoading = false;
+
+  /// Dogs list
   List<Dog> dogs = [];
 
-  DogContext() {
-    _fetch();
+  /// Fetch on initialize
+  DogContext({initialize = false}) {
+    if (initialize) _fetch();
   }
 
   Future _fetch() async {
     try {
-      var dogs = await resource.list();
+      isLoading = true;
+
+      var dogs = await _resource.list();
 
       this.dogs = dogs;
+
       isLoading = false;
 
       notifyListeners();
@@ -26,12 +34,14 @@ class DogContext with ChangeNotifier {
     }
   }
 
+  /// Adds a dog
   void add(Dog dog) {
     dogs.add(dog);
 
     notifyListeners();
   }
 
+  /// Rates a dog
   void rate(Dog dog, int rating) {
     dog.rating = rating;
 

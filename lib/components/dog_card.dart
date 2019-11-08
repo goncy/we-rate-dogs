@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../models/dog.dart';
 import '../pages/details.dart';
 
+/// Dog card
 class DogCard extends StatelessWidget {
+  /// Dog
   final Dog dog;
 
+  /// DogCard constructor
   DogCard(this.dog);
 
   @override

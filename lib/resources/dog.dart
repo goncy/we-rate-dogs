@@ -10,15 +10,15 @@ class DogResource {
   List<Dog> _parse(dynamic dogs) => List<Dog>.from(
         dogs.map(
           (dog) => Dog(
-            dog['name'],
-            dog['location'],
-            dog['description'],
-            dog['image'],
+            name: dog['name'],
+            location: dog['location'],
+            description: dog['description'],
+            image: dog['image'],
           ),
         ),
       );
 
-  Future list() async {
+  Future<List<Dog>> list() async {
     var request = await _http.getUrl(_uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
