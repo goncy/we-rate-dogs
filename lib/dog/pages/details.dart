@@ -20,7 +20,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
-    var rate = Provider.of<DogContext>(context, listen: false).rate;
+    var rate = Provider.of<DogContext>(context).rate;
 
     return Scaffold(
         appBar: AppBar(title: Text('Meet ${widget.dog.name}')),
@@ -77,11 +77,10 @@ class _DetailsPageState extends State<DetailsPage> {
                         size: 40.0,
                       ),
                       Text(' ${widget.dog.rating} / 10',
-                          style: Theme.of(context).textTheme.display1),
+                          style: Theme.of(context).textTheme.headline4),
                     ],
                   ),
                   Slider(
-                    activeColor: Colors.indigoAccent,
                     min: 0,
                     max: 10,
                     divisions: 10,

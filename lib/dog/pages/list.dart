@@ -5,7 +5,7 @@ import '../components/card.dart';
 import '../context.dart';
 
 /// Home page
-class HomePage extends StatelessWidget {
+class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dogs = Provider.of<DogContext>(context).dogs;

@@ -4,7 +4,7 @@ import './model.dart';
 import './resources.dart';
 
 /// Dog context
-class DogContext with ChangeNotifier {
+class DogContext extends ChangeNotifier {
   final DogResource _resource = DogResource();
 
   /// Dog context loading status
@@ -22,14 +22,13 @@ class DogContext with ChangeNotifier {
     try {
       isLoading = true;
 
-      var dogs = await _resource.list();
+      notifyListeners();
 
-      this.dogs = dogs;
-
+      dogs = await _resource.list();
       isLoading = false;
 
       notifyListeners();
-    } catch (exception) {
+    } on Exception catch (exception) {
       print(exception);
     }
   }

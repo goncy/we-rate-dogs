@@ -6,22 +6,21 @@ import './dog/context.dart';
 import './dog/pages/add.dart';
 import './dog/pages/list.dart';
 
-void main() => runApp(ChangeNotifierProvider<DogContext>(
-    builder: (context) => DogContext(initialize: true), child: App()));
+void main() => runApp(App());
 
 /// App component
 class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      Provider.of<DogContext>(context).isLoading
-          ? LoadingPage()
-          : MaterialApp(
-              theme: ThemeData(
-                brightness: Brightness.light,
-              ),
-              initialRoute: '/',
-              routes: {
-                  '/': (context) => HomePage(),
-                  '/add': (context) => AddPage(),
-                });
+  Widget build(BuildContext context) => ChangeNotifierProvider<DogContext>(
+      create: (context) => DogContext(initialize: true),
+      child: MaterialApp(
+          theme: ThemeData(
+              brightness: Brightness.dark, primarySwatch: Colors.deepOrange),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => Provider.of<DogContext>(context).isLoading
+                ? LoadingPage()
+                : ListPage(),
+            '/add': (context) => AddPage(),
+          }));
 }

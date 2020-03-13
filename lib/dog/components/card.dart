@@ -49,9 +49,9 @@ class DogCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Text(dog.name,
-                              style: Theme.of(context).textTheme.headline),
+                              style: Theme.of(context).textTheme.headline5),
                           Text(dog.location,
-                              style: Theme.of(context).textTheme.subhead),
+                              style: Theme.of(context).textTheme.subtitle1),
                           Row(
                             children: <Widget>[
                               Icon(Icons.star),
